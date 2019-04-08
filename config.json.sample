@@ -1,0 +1,8 @@
+{
+	"DEFAULT" :[
+		{
+		"X-API-Key": "keykey",
+		"PDNS_URL": "http://127.0.0.1/api_pdns"
+		}
+	]
+}
