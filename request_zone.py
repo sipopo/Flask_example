@@ -12,14 +12,14 @@ os.environ['no_proxy'] = '127.0.0.1'
 url='http://pdns-m1.avp.ru/api_pdns/api/v1/servers/localhost/zones/trulala.net'
 url='http://127.0.0.1:5000/api/v1/servers/localhost/zones/trulala.net'
 #url='http://pdns-m1.avp.ru/api_pdns/api/v1/servers/localhost/statistics'
-headers = { 'X-API-Key' : 'keykey' }
+headers = { 'X-API-Key' : 'keykey', 'X-Login-ID': 'ostest.com' }
 cert = ('ostest.crt','ostest.key')
 rootCA = 'RootCA-cacert.pem'
 
 payload = {
    "rrsets": [
         {
-            "name": "api1-ns.trulala.net.",
+            "name": "api2-ns.trulala.net.",
             "type": "A",
             "ttl": 3600,
             "changetype": "REPLACE",
@@ -61,12 +61,12 @@ payloadNS = {
 }
 
 #req=requests.get(url,headers=headers,cert=cert,verify=rootCA)
-req=requests.patch(url,headers=headers,cert=cert,verify=rootCA, data=json.dumps(payload))
-#req=requests.patch(url,cert=cert,verify=rootCA, data=json.dumps(payloadNS))
+#req=requests.patch(url,headers=headers,cert=cert,verify=rootCA, data=json.dumps(payload))
+req=requests.patch(url,headers=headers,cert=cert,verify=rootCA, data=json.dumps(payloadNS))
 #print (json.dumps(payload))
 print(req.status_code)
 print(req.text)
-#print(req.json())
+#data = json.loads(req.json())
+#print(json.dumps(data, indent=2))
 print(req.headers)
-#print(req.json())
 #print r.headers['content-type']'
